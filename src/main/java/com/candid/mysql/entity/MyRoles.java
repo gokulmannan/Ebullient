@@ -9,9 +9,9 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="role")
+@Table(name="myrole")
 @Data
-public class Roles {
+public class MyRoles {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;

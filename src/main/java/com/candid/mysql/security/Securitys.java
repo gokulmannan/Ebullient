@@ -15,8 +15,8 @@ import com.candid.mysql.service.Usermysqlservice;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled=true)
-public class Security extends WebSecurityConfigurerAdapter {
+//@EnableGlobalMethodSecurity(prePostEnabled=true)
+public class Securitys extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	Usermysqlservice service;
@@ -29,10 +29,10 @@ public class Security extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		 http.cors().disable().csrf().disable();
+		 http.cors().and().csrf().disable();
 		 http.authorizeRequests().antMatchers("/resources/**", "/webjars/**","/assets/**").permitAll()
-		 .antMatchers(HttpMethod.GET,"/hi").permitAll()
-		 .antMatchers(HttpMethod.POST,"/add").hasAnyRole("STUDENT").anyRequest().permitAll()
+		 .antMatchers("/hi").permitAll()
+		 .antMatchers(HttpMethod.POST,"/add").permitAll()
 		 .antMatchers(HttpMethod.GET,"/all").hasAnyRole("STUDENT").anyRequest().authenticated();
 		 
 	}

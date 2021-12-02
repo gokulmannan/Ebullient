@@ -9,20 +9,20 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.candid.mysql.entity.Student;
+import com.candid.mysql.entity.MyStudent;
 
 public class User implements UserDetails {
 	@Autowired
-	Student s;
+	MyStudent s;
 
-	public User(Student s) {
+	public User(MyStudent s) {
 		super();
 		this.s = s;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
- 		return s.getRole().stream().map(role->new SimpleGrantedAuthority("Role_"+role.getName())).collect(Collectors.toSet());
+ 		return s.getRole().stream().map(role->new SimpleGrantedAuthority("ROLE"+role.getName())).collect(Collectors.toSet());
 	}
 
 	@Override

@@ -14,9 +14,9 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="student")
+@Table(name="mysqlstudent")
 @Data
-public class Student {
+public class MyStudent {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
@@ -26,7 +26,7 @@ public class Student {
 	private int semster;
 	private boolean fees;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private List<Roles> role;
+	private List<MyRoles> role;
 	
 	
 	
